@@ -639,7 +639,12 @@ function Library:RegisterFont(Name, Url, Weight, Style)
 	local DescPath = Folder .. "/" .. Name .. ".font";
 
 	if not isfile(TtfPath) then
-		writefile(TtfPath, game:HttpGet(Url));
+		local ok, data = pcall(function() return game:HttpGet(Url) end);
+		if not ok or type(data) ~= "string" or #data < 128 then
+			warn("[secretserver.pro] UI font unavailable; using built-in font");
+			return nil;
+		end;
+		writefile(TtfPath, data);
 	end;
 	if isfile(DescPath) then
 		delfile(DescPath);
