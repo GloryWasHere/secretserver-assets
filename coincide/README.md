@@ -7,5 +7,5 @@ This package contains the branded Coincide UI library, the white S mark, and ten
 - `waifus/*.png`: renamed images resized to fit the overlay.
 - `waifus/manifest.json`: image names and paths.
 
-The hub loads the owned library URL and downloads the selected image on demand. Its fallback to the upstream UI library can be removed once the owned files are published and verified.
+The hub loads this owned library URL and downloads the selected image on demand. The upstream UI library is no longer part of its loading path.
 
